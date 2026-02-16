@@ -60,6 +60,17 @@ INSERT INTO `employee` (`empNumber`, `fname`, `lname`, `address`, `gender`, `pos
 (5, 'John', 'Doe', 'Elle', '', 'Teacher', NULL),
 (6, 'Josue', 'Meee', 'Muhanga', '', 'HeadGirl', NULL);
 
+--
+-- Dumping data for table `salary`
+--
+
+INSERT INTO `salary` (`tdeduction`, `monthPymnt`, `gsalary`, `netSalary`, `empNumber`) VALUES
+('100', 'January', '2000000', '1999900', 1),
+('150', 'January', '1500000', '1499850', 3),
+('75', 'January', '1200000', '1199925', 4),
+('200', 'January', '2500000', '2499800', 5),
+('50', 'January', '1800000', '1799950', 6);
+
 -- --------------------------------------------------------
 
 --
@@ -67,11 +78,14 @@ INSERT INTO `employee` (`empNumber`, `fname`, `lname`, `address`, `gender`, `pos
 --
 
 CREATE TABLE `salary` (
+  `salaryId` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tdeduction` varchar(20) DEFAULT NULL,
   `monthPymnt` varchar(20) DEFAULT NULL,
   `gsalary` varchar(20) DEFAULT NULL,
   `netSalary` varchar(20) DEFAULT NULL,
-  `empNumber` int(11) DEFAULT NULL
+  `empNumber` int(11) NOT NULL,
+  `createdAt` timestamp DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT `fk_salary_employee` FOREIGN KEY (`empNumber`) REFERENCES `employee` (`empNumber`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -92,10 +106,10 @@ ALTER TABLE `employee`
   ADD KEY `fk_employee_department` (`Departmentcode`);
 
 --
--- Indexes for table `salary`
+-- Indexes for table `department`
 --
-ALTER TABLE `salary`
-  ADD KEY `fk_salary_employee` (`empNumber`);
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`Departmentcode`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -117,11 +131,6 @@ ALTER TABLE `employee`
 ALTER TABLE `employee`
   ADD CONSTRAINT `fk_employee_department` FOREIGN KEY (`Departmentcode`) REFERENCES `department` (`Departmentcode`);
 
---
--- Constraints for table `salary`
---
-ALTER TABLE `salary`
-  ADD CONSTRAINT `fk_salary_employee` FOREIGN KEY (`empNumber`) REFERENCES `employee` (`empNumber`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

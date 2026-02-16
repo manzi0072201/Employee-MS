@@ -1,1 +1,49 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+/* Consistent global styles for the entire application */
+:root {
+  --primary-color: #2563eb; /* blue-600 */
+  --primary-dark: #1d4ed8; /* blue-700 */
+  --light-bg: #eef2ff; /* blue-50 */
+  --border-color: #bfdbfe; /* blue-200 */
+  --text-primary: #1f2937; /* gray-800 */
+  --text-secondary: #6b7280; /* gray-600 */
+  --success-color: #16a34a; /* green-600 */
+  --danger-color: #dc2626; /* red-600 */
+}
+
+/* Consistent button styling */
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-slate-500 hover:bg-slate-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors;
+}
+
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors;
+}
+
+/* Consistent form input styling */
+.input-field {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none;
+}
+
+/* Consistent table styling */
+.table-header {
+  @apply bg-gray-200 border-b-2 border-gray-300;
+}
+
+.table-row {
+  @apply border-b border-gray-200 hover:bg-gray-50;
+}
+
+/* Consistent badge styling */
+.badge-info {
+  @apply bg-blue-100 text-blue-800 px-3 py-1 rounded text-sm font-semibold;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800 px-3 py-1 rounded text-sm font-semibold;
+}
